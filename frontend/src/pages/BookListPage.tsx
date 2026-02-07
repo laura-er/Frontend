@@ -1,12 +1,18 @@
 import BookCard from "../components/BookCard";
 
 export default function BookListPage() {
-    return (
-        <div>
-            <h1>Browse Books</h1>
+    const book = {
+        title: "1984",
+        author: "George Orwell",
+        category: "Dystopian",
+        owner: "Laura",
+        coverColor: "#e5e7eb",
+    };
 
-            <BookCard title="1984" author="George Orwell" />
-            <BookCard title="The Hobbit" author="J.R.R. Tolkien" />
+    return (
+        <div style={{ padding: 40 }}>
+            <h1>Browse Books</h1>
+            <BookCard book={book} />
         </div>
     );
 }
