@@ -1,7 +1,8 @@
-import BookListPage from "./pages/BookListPage";
+import BookListPage from './pages/BookListPage'
 
 function App() {
-    return <BookListPage />;
+    return <BookListPage />
 }
 
-export default App;
+export default App
+
