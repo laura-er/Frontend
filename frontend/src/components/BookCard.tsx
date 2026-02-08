@@ -27,7 +27,7 @@ const BookCard = ({ book }: BookCardProps) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '320px',
+                height: '170px',
                 backgroundColor: book.coverColor
             }}>
                 <BookOpen style={{ width: '64px', height: '64px', color: 'white', opacity: 0.6 }} />
@@ -43,7 +43,7 @@ const BookCard = ({ book }: BookCardProps) => {
                     fontSize: '12px',
                     fontWeight: '500',
                     width: 'fit-content',
-                    marginBottom: '12px'
+                    marginBottom: '6px'
                 }}>
                     {book.category}
                 </span>
