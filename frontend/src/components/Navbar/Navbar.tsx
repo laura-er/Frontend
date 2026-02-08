@@ -1,4 +1,7 @@
-const Navbar = () => {
+type NavbarProps = {
+  setPage: (page: "home" | "login" | "register") => void;
+};
+const Navbar = ({ setPage }: NavbarProps) => {
   return (
     <nav className="navbar">
 
@@ -6,7 +9,7 @@ const Navbar = () => {
         <h2>Bookswap</h2>
 
         <div className="dock">
-          <button>
+          <button onClick={() => setPage("home")}>
             {/* HOME SVG */}
             <svg viewBox="0 0 24 24" className="icon">
               <polyline points="1 11 12 2 23 11" fill="none" stroke="currentColor" strokeWidth="2"/>
@@ -34,11 +37,23 @@ const Navbar = () => {
       </div>
 
       {/* SEARCH -> EXTREMA DREAPTA */}
-      <input
-        type="text"
-        placeholder="Caută cărți..."
-        className="input"
-      />
+      <div className="right-side">
+  <div className="auth-buttons">
+    <button className="login-btn" onClick={() => setPage("login")}>
+      Login
+    </button>
+
+    <button className="register-btn" onClick={() => setPage("register")}>
+      Sign Up
+    </button>
+  </div>
+
+  <input
+    type="text"
+    placeholder="Caută cărți..."
+    className="input"
+  />
+</div>
 
     </nav>
   );
