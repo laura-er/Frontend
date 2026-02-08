@@ -228,3 +228,78 @@ footer {
   margin: 15px auto;   /* centru orizontal */
 }
 
+.auth-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  color: #5b1324;
+  font-weight: 700;
+  text-decoration: underline;
+
+  cursor: pointer; /* apare mâna */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: transform 0.08s ease, opacity 0.2s ease;
+}
+
+/* hover = se vede clar că e link */
+.auth-link:hover {
+  opacity: 0.85;
+}
+
+/* când apeși click (efect de apăsare) */
+.auth-link:active {
+  transform: translateY(1px);
+}
+
+/* săgeată care apare la hover/focus */
+.auth-link::after {
+  content: "→";
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* apare săgeata când treci cu mouse-ul sau cu TAB */
+.auth-link:hover::after,
+.auth-link:focus-visible::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* când selectezi cu TAB să se vadă „focus ring” */
+.auth-link:focus-visible {
+  outline: 2px solid #5b1324;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* container text sub formular */
+.auth-switch {
+  display: flex;
+  flex-direction: column;   /* pune pe verticală */
+  align-items: center;      /* centru perfect */
+  gap: 4px;                 /* spațiu mic între ele */
+  margin-top: 12px;
+}
+
+.auth-switch p {
+  margin: 0;
+}
+
+.auth-link {
+  color: #5b1324;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-link:hover {
+  transform: translateY(-2px);
+  color: #7a1b33;
+}
