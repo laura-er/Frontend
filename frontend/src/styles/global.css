@@ -149,3 +149,9 @@ footer {
   transform: translateY(-5px);
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
