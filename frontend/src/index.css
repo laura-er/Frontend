@@ -66,10 +66,11 @@ footer {
   gap: 25px; /* distanta intre titlu si iconite */
 }
 
-/* împinge search-ul complet la dreapta */
+/* împinge search-ul complet la dreapta 
 .input {
   margin-left: auto;
-}
+} */
+
 .section-title {
   color: #3b3838;
   text-align: left;
@@ -122,5 +123,108 @@ footer {
 /* hover modern */
 .dock button:hover {
   transform: translateY(-5px);
+}
+
+.navbar {
+  padding: 20px;
+  background: #3b3838;
+  color: rgb(204, 194, 194);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right-side {
+  display: flex;          /* pune Login, Register și Search pe aceeași linie */
+  align-items: center;    /* le aliniază vertical pe mijloc */
+  gap: 14px;              /* spațiu între Login/Register și Search */
+}
+
+.auth-buttons {
+  display: flex;          /* Login și Register stau unul lângă altul */
+  align-items: center;    /* aliniere pe mijloc */
+  gap: 10px;              /* spațiu între Login și Register */
+}
+
+/* login simplu, ca text */
+.login-btn {
+  padding: 0;             /* scoate padding-ul global de la button */
+  background: transparent;/* fără fundal (arată ca text) */
+  border: none;           /* fără bordură */
+  color: rgb(204, 194, 194); /* culoare ca navbarul */
+  font-size: 16px;        /* mărimea textului */
+  cursor: pointer;        /* cursor tip mână la hover */
+}
+
+/* register ca buton colorat */
+.register-btn {
+  padding: 8px 14px;      /* spațiu în interiorul butonului */
+  background: #5b1324;    /* culoare fundal (burgundy) */
+  color: white;           /* text alb */
+  border: none;           /* fără bordură */
+  border-radius: 12px;    /* colțuri rotunjite */
+  font-size: 16px;        /* mărimea textului */
+  cursor: pointer;        /* cursor mână */
+}
+
+.login-btn:hover {
+  color: white;        /* text mai luminos când treci cu mouse-ul */
+  opacity: 1.0;        /* puțin efect de luminare */
+}
+
+.register-btn:hover {
+  background: #7a1b33; /* culoare puțin mai deschisă la hover */
+}
+
+.login-btn,
+.register-btn {
+  display: inline-block;          /* IMPORTANT — permite transform */
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  transform: translateY(-5px);
+}
+
+.auth-container {
+  min-height: calc(100vh - 80px);  /* ocupă ecranul minus navbar */
+  display: flex;
+  justify-content: center;         /* centru orizontal */
+  align-items: center;             /* centru vertical */
+}
+
+.auth-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  width: 350px;
+}
+
+.auth-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #e4e3d0, #e2cdb4);
+}
+
+.auth-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+  width: 350px;
+}
+
+.auth-card {
+  backdrop-filter: blur(4px);
+}
+
+.auth-card button {
+  display: block;
+  margin: 15px auto;   /* centru orizontal */
 }
 
