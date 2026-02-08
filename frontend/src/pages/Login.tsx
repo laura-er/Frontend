@@ -1,11 +1,17 @@
 import { useState } from "react";
 import "../styles/global.css";
 
-const Login = () => {
+export type Page = "home" | "login" | "register";
+
+type LoginProps = {
+  setPage: (page: Page) => void;
+};
+
+const Login = ({ setPage }: LoginProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     console.log("Login data:", { email, password });
   };
@@ -33,9 +39,16 @@ const Login = () => {
 
         <button type="submit">Autentificare</button>
 
-        <p>
-          Nu ai cont? <a href="/register">Înregistrează-te</a>
-        </p>
+        <div className="auth-switch">
+          <p>Nu ai cont?</p>
+          
+          <span
+          className="auth-link"
+          onClick={() => setPage("register")}
+          >
+            Înregistrează-te
+          </span>
+        </div>
       </form>
     </div>
   );
