@@ -5,6 +5,7 @@ import Hero from "../components/Hero/Hero";
 import Footer from "../components/Footer/Footer";
 
 import Login from "./Login";
+import Register from "./Register";
 
 type Page = "home" | "login" | "register";
 
@@ -16,7 +17,9 @@ const Home = () => {
       <Navbar setPage={setPage} />
 
       {page === "home" && <Hero />}
-      {page === "login" && <Login />}
+      {page === "login" && <Login setPage={setPage} />}
+      {page === "register" && <Register setPage={setPage} />}
+
 
       <Footer />
     </>
