@@ -1,12 +1,32 @@
 import { useState } from "react";
-import { BookOpen, Search } from "lucide-react";
+import { BookOpen, Search, Library, Laptop, Heart, BookText, Ghost, Eye, Lightbulb, Globe } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { mockBooks } from "@/data/mockBooks";
 
-const categories = ["All", ...Array.from(new Set(mockBooks.map((b) => b.category)))];
+const categories = [
+    "All",
+    "Computer Science",
+    "Romance",
+    "Literature",
+    "Horror",
+    "Mystery/Thriller",
+    "Self-Help",
+    "History"
+] as const;
+
+const categoryIcons: Record<string, LucideIcon> = {
+    "All": Library,
+    "Computer Science": Laptop,
+    "Romance": Heart,
+    "Literature": BookText,
+    "Horror": Ghost,
+    "Mystery/Thriller": Eye,
+    "Self-Help": Lightbulb,
+    "History": Globe
+};
 
 export default function BookListPage() {
     const [search, setSearch] = useState("");
@@ -51,24 +71,36 @@ export default function BookListPage() {
                     </Field>
                 </div>
 
-                {/* Category Filters - Modern Badge Pills */}
                 <div className="mb-6">
                     <div className="flex flex-wrap">
-                        {categories.map((cat) => (
-                            <Badge
-                                key={cat}
-                                onClick={() => setActiveCategory(cat)}
-                                variant={activeCategory === cat ? "default" : "secondary"}
-                                style={{ marginRight: '16px', marginBottom: '8px' }}
-                                className="cursor-pointer px-4 py-2 text-sm font-medium transition-all hover:scale-105"
-                            >
-                                {cat}
-                            </Badge>
-                        ))}
+                        {categories.map((cat) => {
+                            const Icon = categoryIcons[cat] || Library;
+                            const isActive = activeCategory === cat;
+
+                            return (
+                                <Badge
+                                    key={cat}
+                                    onClick={() => setActiveCategory(cat)}
+                                    variant={isActive ? "default" : "secondary"}
+                                    style={{
+                                        marginRight: '16px',
+                                        marginBottom: '8px',
+                                        backgroundColor: isActive ? '#E6501B' : '#f3f4f6',
+                                        color: isActive ? 'white' : '#374151',
+                                        borderColor: isActive ? '#E6501B' : 'transparent'
+                                    }}
+                                    className="cursor-pointer px-4 py-2 text-sm font-medium transition-all hover:scale-105 flex items-center gap-2"
+                                >
+                                    <Icon className="h-4 w-4" />
+                                    {cat}
+                                </Badge>
+                            );
+                        })}
                     </div>
                 </div>
+                
+                
             </main>
         </div>
     );
 }
-
