@@ -1,0 +1,151 @@
+.input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.dock button {
+  display: flex;           /* pictograma și label-ul pe rând sau coloană */
+  flex-direction: column;  /* sus svg, jos text */
+  align-items: center;     /* centru vertical și orizontal */
+  justify-content: center;
+  width: 80px;             /* fix sau după nevoie */
+  height: 80px;            /* fix pentru toate */
+  padding: 8px;
+  gap: 4px;                /* spațiu între svg și text */
+  border: none;            /* optional */
+  background: transparent; /* sau orice culoare */
+  cursor: pointer;
+}
+
+
+
+.dock svg {
+  width: 1.5em;            /* toate svg la aceeași dimensiune */
+  height: 1.5em;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  padding: 20px;
+  background: #3b3838;
+  color: rgb(204, 194, 194);
+}
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+.dock button {
+  width: 80px;
+  height: 80px;
+  color:rgb(204, 194, 194);
+
+  padding: 0;              /* ANULEAZĂ padding-ul global */
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+.dock {
+  display: flex;
+  gap: 30px;   /* ← asta le depărtează */
+}
+.dock svg {
+  width: 26px;
+  height: 26px;
+}
+.dock button:focus,
+.dock button:active {
+  outline: none;
+}
+
+footer {
+  padding: 20px;
+  background: rgb(204, 194, 194);
+  text-align: center;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* grupul din stânga */
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* distanta intre titlu si iconite */
+}
+
+/* împinge search-ul complet la dreapta */
+.input {
+  margin-left: auto;
+}
+.section-title {
+  color: #3b3838;
+  text-align: left;
+  margin: 1.5rem 0 0.5rem;
+}
+/* container */
+.dock {
+  display: flex;
+  align-items: center;
+  gap: 28px; /* distanta MAI mare intre ele */
+}
+
+/* butoane */
+.dock button {
+  width: 80px;
+  height: 80px;
+
+  background: none !important;   /* scoate orice galben */
+  border: none !important;
+  box-shadow: none !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  padding: 0;
+}
+
+/* scoate highlight-ul galben la click */
+.dock button:focus,
+.dock button:active {
+  outline: none;
+  background: none !important;
+}
+
+/* icon */
+.dock svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* text */
+.dock-label {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/* hover modern */
+.dock button:hover {
+  transform: translateY(-5px);
+}
+
