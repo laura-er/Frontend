@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BookOpen, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { mockBooks } from "@/data/mockBooks";
@@ -50,22 +51,19 @@ export default function BookListPage() {
                     </Field>
                 </div>
 
-                {/* Category Filters */}
-                <div className="mb-6 border-b border-border">
-                    <div className="flex">
+                {/* Category Filters - Modern Badge Pills */}
+                <div className="mb-6">
+                    <div className="flex flex-wrap">
                         {categories.map((cat) => (
-                            <button
+                            <Badge
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
-                                style={{ marginRight: '32px' }}
-                                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors rounded-t-md ${
-                                    activeCategory === cat
-                                        ? "text-foreground border-primary"
-                                        : "text-muted-foreground border-transparent hover:text-foreground hover:border-border"
-                                }`}
+                                variant={activeCategory === cat ? "default" : "secondary"}
+                                style={{ marginRight: '16px', marginBottom: '8px' }}
+                                className="cursor-pointer px-4 py-2 text-sm font-medium transition-all hover:scale-105"
                             >
                                 {cat}
-                            </button>
+                            </Badge>
                         ))}
                     </div>
                 </div>
