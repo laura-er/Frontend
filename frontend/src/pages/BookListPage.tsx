@@ -3,14 +3,18 @@ import { BookOpen, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { mockBooks } from "@/data/mockBooks";
+
+const categories = ["All", ...Array.from(new Set(mockBooks.map((b) => b.category)))];
 
 export default function BookListPage() {
     const [search, setSearch] = useState("");
+    const [activeCategory, setActiveCategory] = useState("All");
 
     return (
         <div className="min-h-screen bg-background">
-            <header className="border-b bg-card">
-                <div className="container flex items-center justify-between py-4">
+            <header className="border-b bg-card m-0">
+                <div className="container flex items-center justify-between py-0.5">
                     <div className="flex items-center gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
                             <BookOpen className="h-5 w-5 text-primary-foreground" />
@@ -44,6 +48,26 @@ export default function BookListPage() {
                             <Search className="h-4 w-4" />
                         </Button>
                     </Field>
+                </div>
+
+                {/* Category Filters */}
+                <div className="mb-6 border-b border-border">
+                    <div className="flex">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setActiveCategory(cat)}
+                                style={{ marginRight: '32px' }}
+                                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors rounded-t-md ${
+                                    activeCategory === cat
+                                        ? "text-foreground border-primary"
+                                        : "text-muted-foreground border-transparent hover:text-foreground hover:border-border"
+                                }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </main>
         </div>
