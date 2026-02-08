@@ -60,24 +60,52 @@ export default function BookListPage() {
                             placeholder="Search..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
+                            onFocus={(e) => {
+                                e.currentTarget.style.borderColor = '#E6501B';
+                                e.currentTarget.style.boxShadow = '0 0 0 3px rgba(230, 80, 27, 0.1)';
+                            }}
+                            onBlur={(e) => {
+                                e.currentTarget.style.borderColor = '#d1d5db';
+                                e.currentTarget.style.boxShadow = 'none';
+                            }}
                             style={{
                                 width: '200px',
                                 padding: '8px 12px',
                                 border: '1px solid #d1d5db',
                                 borderRadius: '6px',
-                                fontSize: '14px'
+                                fontSize: '14px',
+                                outline: 'none',
+                                transition: 'all 0.2s ease'
                             }}
                         />
-                        <button style={{
-                            padding: '8px 16px',
-                            background: '#1f2937',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '6px',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center'
-                        }}>
+                        <button
+                            onClick={() => console.log('Search for:', search)}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.background = '#d14516';
+                                e.currentTarget.style.transform = 'scale(1.05)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = '#E6501B';
+                                e.currentTarget.style.transform = 'scale(1)';
+                            }}
+                            onMouseDown={(e) => {
+                                e.currentTarget.style.transform = 'scale(0.95)';
+                            }}
+                            onMouseUp={(e) => {
+                                e.currentTarget.style.transform = 'scale(1.05)';
+                            }}
+                            style={{
+                                padding: '8px 16px',
+                                background: '#E6501B',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '6px',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                transition: 'all 0.15s ease'
+                            }}
+                        >
                             <Search style={{ width: '16px', height: '16px' }} />
                         </button>
                     </div>
@@ -94,6 +122,24 @@ export default function BookListPage() {
                                 <button
                                     key={cat}
                                     onClick={() => setActiveCategory(cat)}
+                                    onMouseEnter={(e) => {
+                                        if (!isActive) {
+                                            e.currentTarget.style.background = '#e5e7eb';
+                                            e.currentTarget.style.transform = 'scale(1.05)';
+                                        }
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        if (!isActive) {
+                                            e.currentTarget.style.background = '#f3f4f6';
+                                            e.currentTarget.style.transform = 'scale(1)';
+                                        }
+                                    }}
+                                    onMouseDown={(e) => {
+                                        e.currentTarget.style.transform = 'scale(0.95)';
+                                    }}
+                                    onMouseUp={(e) => {
+                                        e.currentTarget.style.transform = isActive ? 'scale(1)' : 'scale(1.05)';
+                                    }}
                                     style={{
                                         display: 'flex',
                                         alignItems: 'center',
@@ -106,7 +152,7 @@ export default function BookListPage() {
                                         fontSize: '14px',
                                         fontWeight: '500',
                                         cursor: 'pointer',
-                                        transition: 'all 0.2s'
+                                        transition: 'all 0.2s ease'
                                     }}
                                 >
                                     <Icon style={{ width: '16px', height: '16px' }} />
