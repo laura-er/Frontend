@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { BookOpen, Search, Library, Laptop, Heart, BookText, Ghost, Eye, Lightbulb, Globe } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Field } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import BookCard from "@/components/BookCard";
+import { mockBooks } from "@/data/mockBooks";
 
 const categories = [
     "All",
@@ -15,7 +13,7 @@ const categories = [
     "Mystery/Thriller",
     "Self-Help",
     "History"
-] as const;
+];
 
 const categoryIcons: Record<string, LucideIcon> = {
     "All": Library,
@@ -33,73 +31,107 @@ export default function BookListPage() {
     const [activeCategory, setActiveCategory] = useState("All");
 
     return (
-        <div className="min-h-screen bg-background">
-            <header className="border-b bg-card m-0">
-                <div className="container flex items-center justify-between py-0.5">
-                    <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                            <BookOpen className="h-5 w-5 text-primary-foreground" />
-                        </div>
-                        <div>
-                            <h1 className="font-heading text-xl font-bold text-foreground">BookSwap</h1>
-                            <p className="text-xs text-muted-foreground">Book Exchange</p>
-                        </div>
+        <div style={{ minHeight: '100vh', background: '#ffffff' }}>
+            {/* Header */}
+            <header style={{ borderBottom: '1px solid #e5e7eb', padding: '4px 0' }}>
+                <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '40px', height: '40px', background: '#1f2937', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <BookOpen style={{ width: '20px', height: '20px', color: 'white' }} />
+                    </div>
+                    <div>
+                        <h1 style={{ fontSize: '20px', fontWeight: 'bold', margin: 0 }}>BookSwap</h1>
+                        <p style={{ fontSize: '12px', color: '#6b7280', margin: 0 }}>Book Exchange</p>
                     </div>
                 </div>
             </header>
 
-            <main className="container py-8">
-                <div className="mb-8 flex flex-row items-end justify-between gap-6">
+            {/* Main */}
+            <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
+                {/* Title & Search */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', gap: '24px' }}>
                     <div>
-                        <h2 className="font-heading text-3xl font-bold text-foreground">Browse Books</h2>
-                        <p className="mt-1 text-muted-foreground">
-                            Find textbooks and novels available for swapping with fellows.
-                        </p>
+                        <h2 style={{ fontSize: '30px', fontWeight: 'bold', margin: '0 0 8px 0' }}>Browse Books</h2>
+                        <p style={{ color: '#6b7280', margin: 0 }}>Find textbooks and novels available for swapping with fellows.</p>
                     </div>
 
-                    <Field orientation="horizontal" className="w-auto shrink-0">
-                        <Input
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                        <input
                             type="search"
                             placeholder="Search..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="w-48"
+                            style={{
+                                width: '200px',
+                                padding: '8px 12px',
+                                border: '1px solid #d1d5db',
+                                borderRadius: '6px',
+                                fontSize: '14px'
+                            }}
                         />
-                        <Button>
-                            <Search className="h-4 w-4" />
-                        </Button>
-                    </Field>
+                        <button style={{
+                            padding: '8px 16px',
+                            background: '#1f2937',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}>
+                            <Search style={{ width: '16px', height: '16px' }} />
+                        </button>
+                    </div>
                 </div>
 
-                <div className="mb-6">
-                    <div className="flex flex-wrap">
+                {/* Category Tags */}
+                <div style={{ marginBottom: '32px' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
                         {categories.map((cat) => {
                             const Icon = categoryIcons[cat] || Library;
                             const isActive = activeCategory === cat;
 
                             return (
-                                <Badge
+                                <button
                                     key={cat}
                                     onClick={() => setActiveCategory(cat)}
-                                    variant={isActive ? "default" : "secondary"}
                                     style={{
-                                        marginRight: '16px',
-                                        marginBottom: '8px',
-                                        backgroundColor: isActive ? '#E6501B' : '#f3f4f6',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        padding: '8px 16px',
+                                        background: isActive ? '#E6501B' : '#f3f4f6',
                                         color: isActive ? 'white' : '#374151',
-                                        borderColor: isActive ? '#E6501B' : 'transparent'
+                                        border: 'none',
+                                        borderRadius: '20px',
+                                        fontSize: '14px',
+                                        fontWeight: '500',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.2s'
                                     }}
-                                    className="cursor-pointer px-4 py-2 text-sm font-medium transition-all hover:scale-105 flex items-center gap-2"
                                 >
-                                    <Icon className="h-4 w-4" />
+                                    <Icon style={{ width: '16px', height: '16px' }} />
                                     {cat}
-                                </Badge>
+                                </button>
                             );
                         })}
                     </div>
                 </div>
-                
-                
+
+                {/* Results Count */}
+                <p style={{ marginBottom: '16px', fontSize: '14px', color: '#6b7280' }}>
+                    Showing {mockBooks.length} books
+                </p>
+
+                {/* Book Grid */}
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(4, 1fr)',
+                    gap: '24px'
+                }}>
+                    {mockBooks.map((book) => (
+                        <BookCard key={book.id} book={book} />
+                    ))}
+                </div>
             </main>
         </div>
     );
