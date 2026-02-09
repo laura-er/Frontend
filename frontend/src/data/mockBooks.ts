@@ -38,7 +38,7 @@ export const mockBooks: Book[] = [
         author: "J.K. Rowling",
         category: "Literature",
         owner: "Emma Wilson",
-        coverColor: "#2A3663"
+        coverColor: "#2A3666"
     }
 ];
 
