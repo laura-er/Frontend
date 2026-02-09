@@ -1,3 +1,5 @@
+
+
 import { useState } from "react";
 
 import Navbar from "../components/Navbar/Navbar";
@@ -10,20 +12,20 @@ import Register from "./Register";
 type Page = "home" | "login" | "register";
 
 const Home = () => {
-  const [page, setPage] = useState<Page>("home");
+    const [page, setPage] = useState<Page>("home");
 
-  return (
-    <>
-      <Navbar setPage={setPage} />
+    return (
+        <>
+            <Navbar setPage={setPage} />
 
-      {page === "home" && <Hero />}
-      {page === "login" && <Login setPage={setPage} />}
-      {page === "register" && <Register setPage={setPage} />}
+            {page === "home" && <Hero />}
+            {page === "login" && <Login setPage={setPage} />}
+            {page === "register" && <Register setPage={setPage} />}
 
 
-      <Footer />
-    </>
-  );
+            <Footer />
+        </>
+    );
 };
 
 export default Home;

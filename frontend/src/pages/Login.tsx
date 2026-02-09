@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/global.css";
-
+import '../auth.css';
 export type Page = "home" | "login" | "register";
 
 type LoginProps = {
@@ -17,40 +17,40 @@ const Login = ({ setPage }: LoginProps) => {
   };
 
   return (
-    <div className="auth-container">
-      <form className="auth-card" onSubmit={handleSubmit}>
-        <h2>Login</h2>
+      <div className="auth-container">
+        <form className="auth-card" onSubmit={handleSubmit}>
+          <h2>Login</h2>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+          <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+          />
 
-        <input
-          type="password"
-          placeholder="Parola"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <input
+              type="password"
+              placeholder="Parola"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+          />
 
-        <button type="submit">Autentificare</button>
+          <button type="submit">Autentificare</button>
 
-        <div className="auth-switch">
-          <p>Nu ai cont?</p>
-          
-          <span
-          className="auth-link"
-          onClick={() => setPage("register")}
-          >
+          <div className="auth-switch">
+            <p>Nu ai cont?</p>
+
+            <span
+                className="auth-link"
+                onClick={() => setPage("register")}
+            >
             Înregistrează-te
           </span>
-        </div>
-      </form>
-    </div>
+          </div>
+        </form>
+      </div>
   );
 };
 
