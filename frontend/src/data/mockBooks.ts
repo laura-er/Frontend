@@ -14,7 +14,7 @@ export const mockBooks: Book[] = [
         author: "Thomas H. Cormen",
         category: "Computer Science",
         owner: "Alex Johnson",
-        coverColor: "#3b82f6"
+        coverColor: "#715A5A"
     },
     {
         id: "2",
@@ -22,7 +22,7 @@ export const mockBooks: Book[] = [
         author: "Robert C. Martin",
         category: "Programming",
         owner: "Sarah Smith",
-        coverColor: "#10b981"
+        coverColor: "#8A784E"
     },
     {
         id: "3",
@@ -31,6 +31,14 @@ export const mockBooks: Book[] = [
         category: "Literature",
         owner: "Mike Brown",
         coverColor: "#f59e0b"
+    },
+    {
+        id: "4",
+        title: "Harry Potter and the Sorcerer's Stone",
+        author: "J.K. Rowling",
+        category: "Literature",
+        owner: "Emma Wilson",
+        coverColor: "#2A3663"
     }
 ];
 
