@@ -1,0 +1,48 @@
+/* container */
+.dock {
+  display: flex;
+  align-items: center;
+  gap: 28px; /* distanta MAI mare intre ele */
+}
+
+/* butoane */
+.dock button {
+  width: 80px;
+  height: 80px;
+
+  background: none !important;   /* scoate orice galben */
+  border: none !important;
+  box-shadow: none !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  padding: 0;
+}
+
+/* scoate highlight-ul galben la click */
+.dock button:focus,
+.dock button:active {
+  outline: none;
+  background: none !important;
+}
+
+/* icon */
+.dock svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* text */
+.dock-label {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/* hover modern */
+.dock button:hover {
+  transform: translateY(-5px);
+}

@@ -1,0 +1,29 @@
+import { useState } from "react";
+
+import Navbar from "../components/Navbar/Navbar";
+import Hero from "../components/Hero/Hero";
+import Footer from "../components/Footer/Footer";
+
+import Login from "./Login";
+import Register from "./Register";
+
+type Page = "home" | "login" | "register";
+
+const Home = () => {
+  const [page, setPage] = useState<Page>("home");
+
+  return (
+    <>
+      <Navbar setPage={setPage} />
+
+      {page === "home" && <Hero />}
+      {page === "login" && <Login setPage={setPage} />}
+      {page === "register" && <Register setPage={setPage} />}
+
+
+      <Footer />
+    </>
+  );
+};
+
+export default Home;
